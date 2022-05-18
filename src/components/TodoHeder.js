@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import axios from 'axios'
 
-const TodoHeder = ({ loading, setLoading }) => {
+const TodoHeder = ({ setLoading }) => {
 
     const [header, setHeader] = useState('')
     const [description, setDescription] = useState('')
@@ -15,7 +15,7 @@ const TodoHeder = ({ loading, setLoading }) => {
         axios.post('/todo', todo)
             .then(res => {
                 if (res.data.insertedId) {
-
+                    setLoading(true)
                 }
             })
     }
@@ -27,6 +27,7 @@ const TodoHeder = ({ loading, setLoading }) => {
                     type="text"
                     id="todo"
                     className='mb-3'
+                    required
                     value={header}
                     onChange={e => setHeader(e.target.value)}
                 />
@@ -36,6 +37,7 @@ const TodoHeder = ({ loading, setLoading }) => {
                     className='form-control mb-3'
                     id="description"
                     rows='4'
+                    required
                     value={description}
                     onChange={e => setDescription(e.target.value)}
                 />

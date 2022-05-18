@@ -1,9 +1,16 @@
-.app{
+.app {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
 }
 
-.todoForm{
+.todoForm {
     max-width: 400px;
+}
+
+.loading {
+    min-height: calc(100vh - 100px);
+    display: grid;
+    align-items: center;
+    justify-content: center;
 }

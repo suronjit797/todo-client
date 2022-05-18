@@ -1,9 +1,9 @@
 import React from 'react';
 
-const TodoBody = () => {
+const TodoBody = ({todos}) => {
     return (
         <div>
-            todobody
+            {todos.length}
         </div>
     );
 };
