@@ -28,7 +28,7 @@ const Todo = () => {
 
 
     return (
-        <div>
+        <div className='container'>
             <h1 className="text-center"> Add a todo </h1>
             <TodoHeder setLoading={setLoading} />
 

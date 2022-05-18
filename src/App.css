@@ -2,6 +2,10 @@ a{
     text-decoration: none;
 }
 
+img{
+    max-width: 100%;
+}
+
 .cursor_pointer{
     cursor: pointer;
 }
@@ -21,4 +25,30 @@ a{
     display: grid;
     align-items: center;
     justify-content: center;
+}
+
+
+/* form */
+
+.form{
+    position: relative;
+    min-height: 80vh;
+    z-index: 1;
+}
+
+.form::before{
+    content: '';
+    width: 50%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: rgb(78,39,145);
+background: linear-gradient(120deg, rgba(78,39,145,1) 35%, rgba(68,71,93,1) 63%);
+    z-index: -1;
+}
+
+.form_right{
+    background: rgb(78,39,145);
+background: linear-gradient(120deg, rgba(78,39,145,1) 35%, rgba(68,71,93,1) 63%);
 }
