@@ -5,6 +5,7 @@ import Login from './components/Login';
 import Register from './components/Register';
 import Todo from './components/Todo';
 
+import 'sweetalert2/dist/sweetalert2.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './App.css';
 import Footer from './components/Footer';
@@ -12,6 +13,7 @@ import { Container } from 'react-bootstrap';
 
 
 function App() {
+
   return (
     <div className='app'>
       <Header />
@@ -22,7 +24,8 @@ function App() {
           <Route path='/register' element={<Register />} />
         </Routes>
       </Container>
-        <Footer />
+
+      <Footer />
     </div>
   );
 }

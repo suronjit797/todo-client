@@ -10,7 +10,7 @@ const TodoHeder = ({ setLoading }) => {
 
     const handleTodo = event => {
         event.preventDefault()
-        const todo = { header, description };
+        const todo = { header, description, complete: false };
 
         axios.post('/todo', todo)
             .then(res => {
@@ -42,7 +42,7 @@ const TodoHeder = ({ setLoading }) => {
                     onChange={e => setDescription(e.target.value)}
                 />
 
-                <Button type='submit' variant='success' className='text-capitalize' > Add Task </Button>
+                <Button type='submit' variant='success' className='text-capitalize'  > Add Task </Button>
             </Form>
         </div>
     );

@@ -32,7 +32,7 @@ const Todo = () => {
             <TodoHeder setLoading={setLoading} />
             <hr className='my-5' />
 
-            <TodoBody todos={todos} />
+            <TodoBody todos={todos} setLoading={setLoading}  />
 
         </div>
     );
