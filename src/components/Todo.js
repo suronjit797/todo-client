@@ -29,10 +29,20 @@ const Todo = () => {
 
     return (
         <div>
+            <h1 className="text-center"> Add a todo </h1>
             <TodoHeder setLoading={setLoading} />
-            <hr className='my-5' />
 
-            <TodoBody todos={todos} setLoading={setLoading}  />
+            {
+                todos.length ? (
+                    <>
+                        <hr className='my-5' />
+                        <h1 className="text-center mb-4"> Todo list </h1>
+                        <TodoBody todos={todos} setLoading={setLoading} />
+                    </>
+                ) : (
+                    <p className="text-danger mt-5"> No todo list found. Please add some  </p>
+                )
+            }
 
         </div>
     );

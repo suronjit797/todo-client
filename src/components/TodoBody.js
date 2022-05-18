@@ -8,7 +8,7 @@ const TodoBody = ({ todos, setLoading }) => {
 
     const completeConfirm = id => {
         Swal.fire({
-            title: 'Do you want to save the changes?',
+            title: 'Do you want to update?',
             showDenyButton: true,
             showCancelButton: true,
             confirmButtonText: 'Complete',
@@ -30,7 +30,7 @@ const TodoBody = ({ todos, setLoading }) => {
     }
     const removeConfirm = id => {
         Swal.fire({
-            title: 'Do you want to save the changes?',
+            title: 'Are you sure want to remove this item?',
             showDenyButton: true,
             showCancelButton: true,
             confirmButtonText: 'Complete',
@@ -38,11 +38,11 @@ const TodoBody = ({ todos, setLoading }) => {
         })
             .then((result) => {
                 if (result.isConfirmed) {
-                    axios.put(`/todo/${id}`, { complete: true })
+                    axios.delete(`/todo/${id}`, { complete: true })
                         .then(res => {
                             if (res.data) {
                                 setLoading(true)
-                                Swal.fire('Saved!', '', 'success')
+                                Swal.fire('Deleted!', '', 'success')
                             }
                         })
                 } else if (result.isDenied) {
@@ -53,15 +53,33 @@ const TodoBody = ({ todos, setLoading }) => {
 
 
     return (
-        <div>
+        <div className='mb-5'>
             <div className="row row-cols-lg-3 row-cols-md-2 row-cols-1 align-items-stretch g-4">
                 {
                     todos.map((todo, index) => (
                         <div className="col" key={todo._id} >
                             <Card className='h-100 d-flex flex-column mb-3 p-3 shadow' >
-                                <div className={todo.complete ? 'text-decoration-line-through' : ''}>
+                                <div className={todo.complete ? 'text-decoration-line-through opacity-50' : ''}>
                                     <h4 className='text-primary'>{index + 1}. {todo.header} </h4>
-                                    <p>  {todo.description} </p>
+                                    <p>
+                                        {
+                                            todo.description.length > 100 ? (
+                                                <>
+                                                    {
+                                                        todo.description.substr(0, 100)
+                                                    }
+                                                    <span
+                                                    className='text-primary cursor_pointer' 
+                                                    onClick={()=>Swal.fire({
+                                                        text: todo.description
+                                                    })}
+                                                    > See more </span>
+                                                </>
+                                            ) : (
+                                                todo.description
+                                            )
+                                        }
+                                    </p>
                                 </div>
                                 <hr className="mt-auto" />
                                 <div className="d-flex ">
